@@ -1,0 +1,7 @@
+- dodać obsługę związaną z walidacją na poziomie GlobalExceptionHandler
+- dodać implementację modułu orders przy czym (spełnić kontrakt orders-api, używając Clean Architecture, dostarczyć
+    fake dla ProductsProvider i PaymentsService, napisać adapter restowy)
+    Logika PlaceOrderService:
+        - Obliczamy totalValue zamówienia
+        - Robimy płatność na obliczoną kwotę
+        - Logujemy to na konsoli
