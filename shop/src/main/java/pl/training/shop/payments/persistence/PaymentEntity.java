@@ -12,7 +12,7 @@ import java.util.Map;
 @Entity
 @EqualsAndHashCode(of = "id")
 @Data
-public class PaymentEntity {
+class PaymentEntity {
 
     @Id
     private String id;

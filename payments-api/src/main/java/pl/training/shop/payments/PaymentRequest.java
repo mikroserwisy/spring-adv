@@ -10,7 +10,7 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-class PaymentRequest {
+public class PaymentRequest {
 
     private Long requestId;
     private FastMoney value;
