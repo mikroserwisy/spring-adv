@@ -11,7 +11,7 @@ class ProcessPaymentService {
     private final TimeProvider timeProvider;
     private final PaymentsWriterAdapter paymentsWriter;
 
-    public PaymentDomain process(PaymentRequestDomain paymentRequest) {
+    PaymentDomain process(PaymentRequestDomain paymentRequest) {
         var payment = createPayment(paymentRequest);
         paymentsWriter.save(payment);
         return payment;
