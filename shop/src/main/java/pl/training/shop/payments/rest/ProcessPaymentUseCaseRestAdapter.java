@@ -2,12 +2,17 @@ package pl.training.shop.payments.rest;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.training.shop.commons.rest.UriBuilder;
+import pl.training.shop.commons.BaseValidation;
+import pl.training.shop.commons.ExtendedValidation;
 import pl.training.shop.commons.streotype.RestAdapter;
 import pl.training.shop.payments.ProcessPaymentUseCase;
+
+import javax.validation.Valid;
 
 import static lombok.AccessLevel.PACKAGE;
 import static pl.training.shop.commons.rest.UriBuilder.requestUriWithId;
@@ -21,7 +26,10 @@ class ProcessPaymentUseCaseRestAdapter {
     private final ProcessPaymentUseCase processPaymentUseCase;
 
     @PostMapping
-    ResponseEntity<PaymentDto> process(@RequestBody PaymentRequestDto paymentRequestDto) {
+    ResponseEntity<PaymentDto> process(/*@Valid*/ @Validated(ExtendedValidation.class) @RequestBody PaymentRequestDto paymentRequestDto/*, BindingResult bindingResult*/) {
+        /*if (bindingResult.hasErrors()) {
+            return ResponseEntity.badRequest().build();
+        }*/
         var paymentRequest = mapper.toModel(paymentRequestDto);
         var payment = processPaymentUseCase.process(paymentRequest);
         var paymentDto = mapper.toDto(payment);
