@@ -1,7 +1,6 @@
 package pl.training.shop.payments.rest;
 
 import lombok.Data;
-import org.javamoney.moneta.FastMoney;
 
 import java.time.Instant;
 
@@ -9,7 +8,7 @@ import java.time.Instant;
 class PaymentDto {
 
     private String id;
-    private FastMoney value;
+    private String value;
     private Instant timestamp;
     private PaymentStatusDto status;
 
