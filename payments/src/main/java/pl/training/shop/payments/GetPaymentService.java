@@ -5,12 +5,11 @@ import lombok.RequiredArgsConstructor;
 import static lombok.AccessLevel.PACKAGE;
 
 @RequiredArgsConstructor(access = PACKAGE)
-class GetPaymentService  implements GetPaymentUseCase {
+class GetPaymentService {
 
-    private final PaymentsReader paymentsReader;
+    private final PaymentsReaderAdapter paymentsReader;
 
-    @Override
-    public Payment getById(String id) {
+    PaymentDomain getById(String id) {
         return paymentsReader.getById(id)
                 .orElseThrow(PaymentNotFoundException::new);
     }
