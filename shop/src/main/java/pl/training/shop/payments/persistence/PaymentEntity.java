@@ -8,11 +8,14 @@ import javax.persistence.*;
 import java.time.Instant;
 import java.util.Map;
 
+@NamedQuery(name = PaymentEntity.SELECT_WITH_VALUE_GREATER_THEN, query = "select p from PaymentEntity p where p.value >= :value")
 @Table(name = "PAYMENTS")
 @Entity
 @EqualsAndHashCode(of = "id")
 @Data
-class PaymentEntity {
+public class PaymentEntity {
+
+    public static final String SELECT_WITH_VALUE_GREATER_THEN = "paymentsWithValueGreaterThen";
 
     @Id
     private String id;
