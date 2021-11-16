@@ -1,13 +1,13 @@
 package pl.training.shop.orders;
 
-import lombok.Data;
+import lombok.Value;
 import org.javamoney.moneta.FastMoney;
 
-@Data
+@Value
 public class Product {
 
-    private Long id;
-    private String name;
-    private FastMoney price;
+    Long id;
+    String name;
+    FastMoney price;
 
 }

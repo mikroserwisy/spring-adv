@@ -19,10 +19,7 @@ class ProductsProviderAdapter implements ProductsProvider {
 
     @Override
     public Product getProduct(Long id) {
-        var product = new Product();
-        product.setName("Fake");
-        product.setPrice(LocalMoney.of(10));
-        return product;
+        return new Product(1L, "Product", LocalMoney.of(10));
     }
 
 }

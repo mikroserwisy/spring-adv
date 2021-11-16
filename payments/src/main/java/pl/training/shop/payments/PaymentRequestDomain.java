@@ -1,15 +1,15 @@
 package pl.training.shop.payments;
 
-import lombok.Data;
+import lombok.Value;
 import org.javamoney.moneta.FastMoney;
 
 import java.util.Map;
 
-@Data
+@Value
 class PaymentRequestDomain {
 
-    private Long id;
-    private FastMoney value;
-    private Map<String, String> properties;
+    Long id;
+    FastMoney value;
+    Map<String, String> properties;
 
 }

@@ -1,13 +1,13 @@
 package pl.training.shop.orders.rest;
 
-import lombok.Data;
+import lombok.Value;
 
 import java.util.Map;
 
-@Data
+@Value
 class OrderDto {
 
-    private Long id;
-    private Map<Long, Integer> entries;
+    Long id;
+    Map<Long, Integer> entries;
 
 }
