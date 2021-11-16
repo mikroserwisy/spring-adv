@@ -25,8 +25,8 @@ public class LengthValidator {
         for (int index = 0; index < arguments.length; index++) {
             var annotation = getAnnotation(annotations[index]);
             if (annotation.isPresent()) {
-                var id = (String) arguments[index];
-                if (id.length() < annotation.get().length()) {
+                var value = (String) arguments[index];
+                if (value.length() < annotation.get().length()) {
                     throw new IllegalArgumentException();
                 }
             }

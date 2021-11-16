@@ -20,7 +20,7 @@ class GetPaymentUseCaseRestAdapter {
     private final GetPaymentUseCase getPaymentUseCase;
 
     @GetMapping("{id}")
-    public ResponseEntity<PaymentDto> getById(@Length(length = 26) @PathVariable String id) {
+    public ResponseEntity<PaymentDto> getById(@Length(length = 36) @PathVariable String id) {
         var payment = getPaymentUseCase.getById(id);
         var paymentDto = mapper.toDto(payment);
         return ResponseEntity.ok(paymentDto);
