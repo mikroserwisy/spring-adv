@@ -2,7 +2,7 @@ package pl.training.shop.payments.persistence;
 
 import org.springframework.beans.factory.annotation.Value;
 
-public interface PaymentDescription {
+interface PaymentDescription {
 
     String getId();
     String getStatus();

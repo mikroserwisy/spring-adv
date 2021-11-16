@@ -13,7 +13,7 @@ import java.util.Map;
 @Entity
 @EqualsAndHashCode(of = "id")
 @Data
-public class PaymentEntity {
+class PaymentEntity {
 
     public static final String SELECT_WITH_VALUE_GREATER_THEN = "paymentsWithValueGreaterThen";
 
