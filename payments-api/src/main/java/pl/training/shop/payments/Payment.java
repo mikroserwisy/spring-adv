@@ -1,18 +1,19 @@
 package pl.training.shop.payments;
 
 import lombok.Data;
+import lombok.Value;
 import org.javamoney.moneta.FastMoney;
 
 import java.time.Instant;
 import java.util.Map;
 
-@Data
+@Value
 public class Payment {
 
-    private String id;
-    private FastMoney value;
-    private Instant timestamp;
-    private PaymentStatus status;
-    private Map<String, String> properties;
+    String id;
+    FastMoney value;
+    Instant timestamp;
+    PaymentStatus status;
+    Map<String, String> properties;
 
 }

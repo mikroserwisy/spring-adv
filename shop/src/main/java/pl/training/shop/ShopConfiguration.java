@@ -15,7 +15,7 @@ import static springfox.documentation.spi.DocumentationType.OAS_30;
 @EnableTransactionManagement
 @EnableAspectJAutoProxy
 @Configuration
-public class ShopConfiguration {
+class ShopConfiguration {
 
     @Bean
     public Docket docket() {
@@ -26,7 +26,7 @@ public class ShopConfiguration {
     }
 
     @Bean
-    public FastMoneyMapper fastMoneyMapper() {
+    FastMoneyMapper fastMoneyMapper() {
         return Mappers.getMapper(FastMoneyMapper.class);
     }
 

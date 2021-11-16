@@ -1,19 +1,13 @@
 package pl.training.shop.commons.rest;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.Value;
 
 import java.time.LocalDateTime;
 
-@Data
-@RequiredArgsConstructor
-@NoArgsConstructor
+@Value
 public class ExceptionDto {
 
-    @NonNull
-    private String description;
-    private LocalDateTime timestamp = LocalDateTime.now();
+    String description;
+    LocalDateTime timestamp = LocalDateTime.now();
 
 }
