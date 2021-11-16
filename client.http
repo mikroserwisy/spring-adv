@@ -14,7 +14,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/payments/0ea1db25-c4cb-4ef9-9beb-a7c06047c556
+GET http://localhost:8080/payments/0ea1db25-c4cb
 Accept: application/json
 Content-Type: application/json
 
