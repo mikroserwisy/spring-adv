@@ -1,18 +1,16 @@
 package pl.training.shop.orders;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Value;
 import org.javamoney.moneta.FastMoney;
 import pl.training.shop.commons.LocalMoney;
 
 import java.util.List;
 
-@AllArgsConstructor
-@Data
+@Value
 class OrderDomain {
 
-    private Long id;
-    private List<OderEntryDomain> entries;
+    Long id;
+    List<OderEntryDomain> entries;
 
     FastMoney getTotalValue() {
         return entries.stream()

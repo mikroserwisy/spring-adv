@@ -1,15 +1,15 @@
 package pl.training.shop.payments.rest;
 
-import lombok.Data;
+import lombok.Value;
 
 import java.time.Instant;
 
-@Data
+@Value
 class PaymentDto {
 
-    private String id;
-    private String value;
-    private Instant timestamp;
-    private PaymentStatusDto status;
+    String id;
+    String value;
+    Instant timestamp;
+    PaymentStatusDto status;
 
 }
