@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    protected ResponseEntity<ExceptionDto> onValidationException(MethodArgumentNotValidException exception) {
+    protected ResponseEntity<ExceptionDto> onMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
         var description = getValidationErrors(exception);
         return ResponseEntity.badRequest().body(new ExceptionDto(description));
     }
