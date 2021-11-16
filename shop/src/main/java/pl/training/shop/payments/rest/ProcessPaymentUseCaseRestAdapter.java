@@ -10,6 +10,7 @@ import pl.training.shop.commons.ExtendedValidation;
 import pl.training.shop.commons.Lock;
 import pl.training.shop.commons.Retry;
 import pl.training.shop.commons.streotype.RestAdapter;
+import pl.training.shop.payments.PaymentsFacade;
 import pl.training.shop.payments.ProcessPaymentUseCase;
 
 import static lombok.AccessLevel.PACKAGE;
