@@ -5,7 +5,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
-import pl.training.shop.commons.ValidLength;
+import pl.training.shop.commons.Length;
 
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @Component
 public class LengthValidator {
 
-    @Before("execution(* *(@pl.training.shop.commons.ValidLength (*)))")
+    @Before("execution(* *(@pl.training.shop.commons.Length (*)))")
     public void validate(JoinPoint joinPoint) throws NoSuchMethodException {
         var signature = (MethodSignature) joinPoint.getSignature();
         var methodName = signature.getMethod().getName();
@@ -33,10 +33,10 @@ public class LengthValidator {
         }
     }
 
-    private Optional<ValidLength> getAnnotation(Annotation[] annotations) {
+    private Optional<Length> getAnnotation(Annotation[] annotations) {
         return Arrays.stream(annotations)
-                .filter(annotation -> annotation instanceof ValidLength)
-                .map(annotation -> (ValidLength) annotation)
+                .filter(annotation -> annotation instanceof Length)
+                .map(annotation -> (Length) annotation)
                 .findFirst();
     }
 
