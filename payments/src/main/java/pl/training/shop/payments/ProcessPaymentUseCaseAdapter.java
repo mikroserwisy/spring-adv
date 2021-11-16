@@ -1,6 +1,7 @@
 package pl.training.shop.payments;
 
 import lombok.RequiredArgsConstructor;
+import pl.training.shop.commons.Profile;
 
 import static lombok.AccessLevel.PACKAGE;
 
@@ -10,6 +11,7 @@ class ProcessPaymentUseCaseAdapter implements ProcessPaymentUseCase {
     private final PaymentsMapper mapper;
     private final ProcessPaymentService processPaymentService;
 
+    @Profile
     @Override
     public Payment process(PaymentRequest paymentRequest) {
         var paymentRequestDomain = mapper.toDomain(paymentRequest);
