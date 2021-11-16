@@ -4,6 +4,7 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import pl.training.shop.commons.FastMoneyMapper;
 import pl.training.shop.commons.streotype.RestAdapter;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -11,6 +12,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import static springfox.documentation.builders.RequestHandlerSelectors.withClassAnnotation;
 import static springfox.documentation.spi.DocumentationType.OAS_30;
 
+@EnableTransactionManagement
 @EnableAspectJAutoProxy
 @Configuration
 public class ShopConfiguration {
