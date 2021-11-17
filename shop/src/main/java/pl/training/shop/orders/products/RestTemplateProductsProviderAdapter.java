@@ -1,6 +1,5 @@
 package pl.training.shop.orders.products;
 
-import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,9 +10,10 @@ import pl.training.shop.commons.Page;
 import pl.training.shop.commons.ResultPage;
 import pl.training.shop.commons.streotype.Adapter;
 import pl.training.shop.orders.Product;
-import pl.training.shop.orders.ProductNotFoundException;
 import pl.training.shop.orders.ProductsProvider;
 import pl.training.shop.orders.ServiceUnavailableException;
+
+import java.util.List;
 
 import static lombok.AccessLevel.PACKAGE;
 
@@ -30,8 +30,15 @@ class RestTemplateProductsProviderAdapter implements ProductsProvider {
 
     @Override
     public ResultPage<Product> getProducts(Page page) {
-
-        return null;
+        var url = productsEndpoint + "?_start={0}&_limit={1}";
+        try {
+            var productsDto = restTemplate.getForObject(url, ProductDto[].class, page.getIndex() * page.getSize(), page.getSize());
+            var totalEntries = restTemplate.getForObject(productsEndpoint + "/count", Integer.class);
+            var resultPage = new ResultPage<>(List.of(productsDto), page, totalEntries);
+            return mapper.toModel(resultPage);
+        } catch (RestClientException exception) {
+            throw new ServiceUnavailableException(exception);
+        }
     }
 
     @Override
