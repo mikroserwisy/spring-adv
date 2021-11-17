@@ -15,6 +15,7 @@
         <module>commons</module>
         <module>payments</module>
         <module>payments-api</module>
+        <module>payments-broker</module>
         <module>orders</module>
         <module>orders-api</module>
         <module>shop</module>
