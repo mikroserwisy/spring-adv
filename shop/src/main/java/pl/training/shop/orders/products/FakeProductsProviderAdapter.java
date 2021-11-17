@@ -10,7 +10,7 @@ import pl.training.shop.orders.ProductsProvider;
 import java.util.Collections;
 
 @Adapter
-class ProductsProviderAdapter implements ProductsProvider {
+class FakeProductsProviderAdapter implements ProductsProvider {
 
     @Override
     public ResultPage<Product> getProducts(Page page) {

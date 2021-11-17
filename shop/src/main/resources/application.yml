@@ -10,3 +10,6 @@ spring:
 logging:
   level:
     org.springframework.transaction: trace
+    org.javamoney.moneta.FastMoney: OFF
+api:
+    products: https://fullstack-developer.io/api-dev/products

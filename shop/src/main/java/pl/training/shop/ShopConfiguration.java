@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.client.RestTemplate;
 import pl.training.shop.commons.FastMoneyMapper;
 import pl.training.shop.commons.streotype.RestAdapter;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -28,6 +29,11 @@ class ShopConfiguration {
     @Bean
     FastMoneyMapper fastMoneyMapper() {
         return Mappers.getMapper(FastMoneyMapper.class);
+    }
+
+    @Bean
+    RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 }

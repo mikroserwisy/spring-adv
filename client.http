@@ -31,3 +31,11 @@ Content-Type: application/json
     "2": 5
   }
 }
+
+###
+
+GET https://fullstack-developer.io/api-dev/products?_start=0&_limit=10
+
+###
+
+GET https://fullstack-developer.io/api-dev/products/count

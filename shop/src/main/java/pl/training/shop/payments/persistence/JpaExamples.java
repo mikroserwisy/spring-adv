@@ -53,10 +53,6 @@ class JpaExamples implements ApplicationRunner {
         var result = paymentsRepository.findAll(specification, PageRequest.of(0, 10));
 
         log.info("Results: " + result.getContent());*/
-
-        var result = paymentsRepository.getCutomById(id);
-
-        System.out.printf(result.toString());
     }
 
 }
