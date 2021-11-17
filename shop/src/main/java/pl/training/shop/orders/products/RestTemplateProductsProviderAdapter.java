@@ -2,6 +2,7 @@ package pl.training.shop.orders.products;
 
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.web.client.RestClientException;
@@ -13,12 +14,14 @@ import pl.training.shop.orders.Product;
 import pl.training.shop.orders.ProductsProvider;
 import pl.training.shop.orders.ServiceUnavailableException;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 import static lombok.AccessLevel.PACKAGE;
 
 @Primary
 @Adapter
+@Log
 @RequiredArgsConstructor(access = PACKAGE)
 class RestTemplateProductsProviderAdapter implements ProductsProvider {
 
@@ -27,6 +30,11 @@ class RestTemplateProductsProviderAdapter implements ProductsProvider {
     @Value("${api.products}")
     @Setter
     private String productsEndpoint;
+
+    @PostConstruct
+    void init() {
+        log.info("Available products: " + getProducts(new Page(0,10)));
+    }
 
     @Override
     public ResultPage<Product> getProducts(Page page) {
