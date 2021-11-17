@@ -12,6 +12,7 @@ class OrderDomain {
     Long id;
     List<OderEntryDomain> entries;
 
+
     FastMoney getTotalValue() {
         return entries.stream()
                 .map(entry -> entry.getPrice().multiply(entry.getQuantity()))
