@@ -17,7 +17,7 @@ import javax.annotation.PostConstruct;
 
 import static lombok.AccessLevel.PACKAGE;
 
-@Primary
+//@Primary
 @Adapter
 @Log
 @RequiredArgsConstructor(access = PACKAGE)

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import pl.training.shop.commons.Page;
@@ -18,6 +19,7 @@ import java.util.List;
 
 import static lombok.AccessLevel.PACKAGE;
 
+@Primary
 @Adapter
 @Log
 @RequiredArgsConstructor(access = PACKAGE)
@@ -29,10 +31,10 @@ class RestTemplateProductsProviderAdapter implements ProductsProvider {
     @Setter
     private String productsEndpoint;
 
-    /*@PostConstruct
+    @PostConstruct
     void init() {
         log.info("Available products: " + getProducts(new Page(0,10)));
-    }*/
+    }
 
     @Override
     public ResultPage<Product> getProducts(Page page) {
