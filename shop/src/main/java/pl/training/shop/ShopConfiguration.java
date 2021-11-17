@@ -1,6 +1,7 @@
 package pl.training.shop;
 
 import org.mapstruct.factory.Mappers;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -13,6 +14,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import static springfox.documentation.builders.RequestHandlerSelectors.withClassAnnotation;
 import static springfox.documentation.spi.DocumentationType.OAS_30;
 
+@EnableFeignClients
 @EnableTransactionManagement
 @EnableAspectJAutoProxy
 @Configuration

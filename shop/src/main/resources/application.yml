@@ -7,9 +7,25 @@ spring:
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver
+  profiles:
+    active: development
 logging:
   level:
     org.springframework.transaction: trace
     org.javamoney.moneta.FastMoney: OFF
 api:
     products: https://fullstack-developer.io/api-dev/products
+---
+spring:
+  config:
+    activate:
+      on-profile: development
+logging:
+  level:
+    pl.training: DEBUG
+feign:
+  client:
+    config:
+       default: #productsClient
+          loggerLevel: BASIC
+
