@@ -7,9 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static lombok.AccessLevel.PACKAGE;
 
-@Primary
-@Transactional
-@Service
+//@Primary
+//@Transactional
+//@Service
 @RequiredArgsConstructor(access = PACKAGE)
 public class PaymentsFacade implements GetPaymentUseCase, ProcessPaymentUseCase {
 
