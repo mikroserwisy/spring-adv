@@ -5,7 +5,7 @@ import pl.training.shop.payments.TimeProvider;
 
 import java.time.Instant;
 
-@Service
+//@Service
 public class SystemTimeProvider implements TimeProvider {
 
     @Override

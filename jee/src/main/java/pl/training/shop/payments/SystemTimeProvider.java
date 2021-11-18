@@ -1,7 +1,6 @@
 package pl.training.shop.payments;
 
-import jakarta.ejb.Stateless;
-
+import javax.ejb.Stateless;
 import java.time.Instant;
 
 @Stateless
