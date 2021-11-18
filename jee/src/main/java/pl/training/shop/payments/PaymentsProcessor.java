@@ -2,6 +2,7 @@ package pl.training.shop.payments;
 
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
+import pl.training.shop.payments.processing.PaymentDto;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;

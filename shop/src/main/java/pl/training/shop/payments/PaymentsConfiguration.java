@@ -2,6 +2,10 @@ package pl.training.shop.payments;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.connection.CachingConnectionFactory;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jndi.JndiTemplate;
 
 import javax.jms.ConnectionFactory;
@@ -42,6 +46,21 @@ class PaymentsConfiguration {
     @Bean
     Topic trainingTopic(JndiTemplate jndiTemplate) throws NamingException {
         return jndiTemplate.lookup("jms/topic/Training", Topic.class);
+    }
+
+    @Primary
+    @Bean
+    JmsTemplate jmsTemplate(ConnectionFactory jndiConnectionFactory) {
+        var cachingConnectionFactory = new CachingConnectionFactory(jndiConnectionFactory);
+        return new JmsTemplate();
+    }
+
+    @Bean
+    DefaultJmsListenerContainerFactory defaultJmsListenerContainerFactory(ConnectionFactory jndiConnectionFactory) {
+        var factoryBean = new DefaultJmsListenerContainerFactory();
+        factoryBean.setConnectionFactory(jndiConnectionFactory);
+        factoryBean.setConcurrency("5-10");
+        return factoryBean;
     }
 
     @Bean

@@ -18,7 +18,7 @@ import static lombok.AccessLevel.PACKAGE;
 @Component
 @Log
 @RequiredArgsConstructor(access = PACKAGE)
-class PaymentsProcessor {
+class WebClientPaymentsProcessor {
 
     private final PaymentsProcessingMapper mapper;
 
