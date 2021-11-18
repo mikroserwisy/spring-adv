@@ -20,12 +20,12 @@ public class JmsPaymentsProcessor {
 
     private final PaymentsProcessingMapper mapper;
     private final JmsTemplate jmsTemplate;
-    private final Topic training;
+    private final Topic trainingTopic;
 
     @AfterReturning(value = "execution(* pl.training.shop.payments.ProcessPaymentUseCase.pro*(..))", returning = "payment")
     void onPayment(Payment payment) {
         var paymentDto = mapper.toDto(payment);
-        jmsTemplate.send(training, session -> session.createObjectMessage(paymentDto));
+        jmsTemplate.send(trainingTopic, session -> session.createObjectMessage(paymentDto));
     }
 
 }

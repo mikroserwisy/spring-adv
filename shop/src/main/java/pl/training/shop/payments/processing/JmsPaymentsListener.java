@@ -11,7 +11,7 @@ import javax.jms.Message;
 @Log
 class JmsPaymentsListener {
 
-    @JmsListener(destination = "Training")
+    @JmsListener(destination = "Training", containerFactory = "topicContainerFactory")
     @SneakyThrows
     void onMessage(Message message) {
         log.info("New payment: " + message.getBody(PaymentDto.class));
