@@ -2,7 +2,6 @@ package pl.training.shop.payments;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.connection.CachingConnectionFactory;
 import org.springframework.jms.core.JmsTemplate;
@@ -48,11 +47,10 @@ class PaymentsConfiguration {
         return jndiTemplate.lookup("jms/topic/Training", Topic.class);
     }
 
-    @Primary
     @Bean
     JmsTemplate jmsTemplate(ConnectionFactory jndiConnectionFactory) {
         var cachingConnectionFactory = new CachingConnectionFactory(jndiConnectionFactory);
-        return new JmsTemplate();
+        return new JmsTemplate(cachingConnectionFactory);
     }
 
     @Bean
