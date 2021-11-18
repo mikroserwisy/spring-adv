@@ -11,7 +11,6 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.connection.CachingConnectionFactory;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.listener.DefaultMessageListenerContainer;
 import org.springframework.jndi.JndiTemplate;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
@@ -60,7 +59,6 @@ class ShopConfiguration {
                 .build();
     }
 
-
     @Bean
     ConnectionFactory jndiConnectionFactory(JndiTemplate jndiTemplate) throws NamingException {
         return jndiTemplate.lookup("jms/RemoteConnectionFactory", ConnectionFactory.class);
@@ -82,27 +80,29 @@ class ShopConfiguration {
         return new JmsTemplate(cachingConnectionFactory);
     }
 
-    @Bean
+   /* @Bean
     DefaultJmsListenerContainerFactory defaultJmsListenerContainerFactory(ConnectionFactory jndiConnectionFactory) {
         var factoryBean = new DefaultJmsListenerContainerFactory();
         factoryBean.setConnectionFactory(jndiConnectionFactory);
         factoryBean.setConcurrency("5-10");
         return factoryBean;
-    }
+    }*/
 
     @Bean
     JmsListenerContainerFactory<?> topicContainerFactory(ConnectionFactory jndiConnectionFactory, DefaultJmsListenerContainerFactoryConfigurer configurer) {
         var container = new DefaultJmsListenerContainerFactory();
-        container.setPubSubDomain(true);
         configurer.configure(container, jndiConnectionFactory);
+        container.setPubSubDomain(true);
+        container.setConcurrency("5-10");
         return container;
     }
 
     @Bean
     JmsListenerContainerFactory<?> queueContainerFactory(ConnectionFactory jndiConnectionFactory, DefaultJmsListenerContainerFactoryConfigurer configurer) {
         var container = new DefaultJmsListenerContainerFactory();
-        container.setPubSubDomain(false);
         configurer.configure(container, jndiConnectionFactory);
+        container.setPubSubDomain(false);
+        container.setConcurrency("5-10");
         return container;
     }
 

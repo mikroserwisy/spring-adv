@@ -12,7 +12,7 @@ spring:
   profiles:
     active: development
   jms:
-    pub-sub-domain: true
+#    pub-sub-domain: true
   thymeleaf:
     enabled: false
   mail:
