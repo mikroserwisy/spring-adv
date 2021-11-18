@@ -1,3 +1,5 @@
+server:
+  port: 8000
 spring:
   jpa:
     generate-ddl: true
@@ -9,16 +11,25 @@ spring:
     driver-class-name: org.postgresql.Driver
   profiles:
     active: development
+  jms:
+    pub-sub-domain: true
+  thymeleaf:
+    enabled: false
+  mail:
+    host: localhost
+    port: 10025
 logging:
   level:
     org.springframework.transaction: trace
     org.javamoney.moneta.FastMoney: OFF
+##### custom properties
 api:
   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjM3MTQ4NzE2LCJleHAiOjE2Mzk3NDA3MTZ9.txIo7pVhdwS1wxHqHXxNkClqrvVOwMSIhCZCwCnQz_s
   products: https://fullstack-developer.io/api-dev/products
   payments: http://localhost:8081/payments
-server:
-  port: 8000
+mail:
+  sender: training@sages.pl
+languages: pl
 ---
 spring:
   config:
