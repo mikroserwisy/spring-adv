@@ -20,6 +20,7 @@
         <module>orders-api</module>
         <module>shop</module>
         <module>jee</module>
+        <module>HelloWorld</module>
     </modules>
 
 </project>
