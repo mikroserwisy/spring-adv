@@ -6,7 +6,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Controller
 @Log
@@ -16,7 +16,7 @@ public class ChatController {
     @MessageMapping("/chat")
     @SendTo("/main-room/messages")
     public Message onMessage(Message message) {
-        message.setTimestamp(LocalDateTime.now());
+        message.setTimestamp(LocalTime.now());
         log.info("New message: " + message);
         return message;
     }

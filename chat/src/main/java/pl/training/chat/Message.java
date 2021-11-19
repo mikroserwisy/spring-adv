@@ -2,7 +2,7 @@ package pl.training.chat;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 public class Message {
@@ -10,6 +10,6 @@ public class Message {
     private String sender;
     private String recipient;
     private String text;
-    private LocalDateTime timestamp;
+    private LocalTime timestamp;
 
 }
