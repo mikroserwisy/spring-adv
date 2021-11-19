@@ -14,13 +14,20 @@ $(() => {
 
     function onMessage(message) {
         const body = JSON.parse(message.body);
-        console.log(body);
         $(`<p>${body.sender} (${body.timestamp}): ${body.text}</p>`).appendTo($('#messages'));
     }
 
     function onConnect() {
         updateUI(true);
         stompClient.subscribe('/main-room/messages', onMessage)
+        stompClient.subscribe(`/private-room/user${getSocketId()}`, onMessage)
+    }
+
+    function getSocketId() {
+        return stompClient.ws._transport.url
+            .replace('ws://localhost:8080/chat/', '')
+            .replace('/websocket', '')
+            .replace(/^[0-9]+\//,'');
     }
 
     function connect() {
@@ -37,7 +44,7 @@ $(() => {
     function send() {
         const message = JSON.stringify({
             sender: $('#username').val(),
-            recipient: $('#recipient').val(),
+            recipient: $('#recipient').val() || 'all',
             text: $('#message').val()
         });
         stompClient.send('/ws/chat', {}, message);
