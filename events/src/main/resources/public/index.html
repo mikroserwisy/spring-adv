@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+<body>
+<script>
+    const socket = new WebSocket('ws://localhost:8080/events');
+    socket.onopen = function () {
+      console.log('Connected...')
+      socket.send('Web client started')
+    };
+    socket.onclose = function () {
+        console.log('Disconnected...')
+    };
+    socket.onerror = function (error) {
+        console.log(`Error ${error}`)
+    };
+    socket.onmessage = function (message) {
+      console.log(message);
+    };
+</script>
+</body>
+</html>

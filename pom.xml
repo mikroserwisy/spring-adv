@@ -21,6 +21,7 @@
         <module>shop</module>
         <module>jee</module>
         <module>chat</module>
+        <module>events</module>
         <module>HelloWorld</module>
     </modules>
 
