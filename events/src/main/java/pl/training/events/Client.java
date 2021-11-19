@@ -14,7 +14,7 @@ public class Client {
     public static void main(String[] args) throws InterruptedException {
         var client = new ReactorNettyWebSocketClient();
         client.execute(URI.create("ws://localhost:8080/events"), new Handler()).subscribe();
-        Thread.sleep(10_000);
+        Thread.sleep(100_000);
     }
 
 }
