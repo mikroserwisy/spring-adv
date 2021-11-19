@@ -1,5 +1,6 @@
 package pl.training.shop.commons.cache;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
@@ -24,10 +25,11 @@ public class CacheConfiguration {
     }*/
 
     @Bean
-    public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
+    public CacheManager cacheManager(RedisConnectionFactory connectionFactory, ObjectMapper mapper) {
         var config = RedisCacheConfiguration.defaultCacheConfig()
                 .serializeKeysWith(fromSerializer(new StringRedisSerializer()))
-                .serializeValuesWith(fromSerializer(new GenericJackson2JsonRedisSerializer()));
+                .serializeValuesWith(fromSerializer(new GenericJackson2JsonRedisSerializer(mapper)));
+        config.usePrefix();
         return RedisCacheManager.builder(connectionFactory)
                 .cacheDefaults(config)
                 .build();

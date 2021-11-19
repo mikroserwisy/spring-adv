@@ -31,7 +31,7 @@ class PaymentEntity {
     @Column(name = "VALUE")
     private Map<String, String> properties;*/
     @JoinColumn
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<PropertyEntity> properties;
 
 }
