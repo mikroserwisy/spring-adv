@@ -27,7 +27,7 @@ public class ChatController {
         } else {
             var recipientSocketId = usersRepository.getSocketId(message.getRecipient());
             messagingTemplate.convertAndSend("/private-room/user" + recipientSocketId, message);
-            messagingTemplate.convertAndSend("/private-room/user" + recipientSocketId, message);
+            messagingTemplate.convertAndSend("/private-room/user" + sessionId, message);
         }
     }
 
